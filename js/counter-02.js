@@ -1,4 +1,3 @@
-console.log("hello from Js-counter-02")
 
 window.addEventListener('click', function (event) {
 
@@ -28,7 +27,17 @@ window.addEventListener('click', function (event) {
         //   Проверяем товар который находится в корзине, если он есть и значение его 
         // счётчика равно 1, при нажатии на кнопку минус удаляем его из корзины
            event.target.closest('.cart-item').remove()
+            // Отображение статуса корзины
+           toggleCartStatus()
+            // Пересчёт общей стоимости корзины
+        calcCartPriceAndDelivery();
+           
         }
        
+    }
+    // Проверяем клик на + или - внутри корзины
+    if (event.target.hasAttribute('data-action')&&event.target.closest('.cart-wrapper')) {
+         // Пересчёт общей стоимости корзины
+        calcCartPriceAndDelivery();
     }
 })
